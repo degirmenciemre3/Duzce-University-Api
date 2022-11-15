@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Desktop\\programlama\\web\\DuzceUniversityWebApi\\DuzceUniversityWebApi\\DuzceUniversityWebApi.csproj": {}
+    "C:\\Users\\User\\Desktop\\Github\\Duzce-University-Api\\DuzceUniversityWebApi\\DuzceUniversityWebApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Desktop\\programlama\\web\\DuzceUniversityWebApi\\DuzceUniversityWebApi\\DuzceUniversityWebApi.csproj": {
+    "C:\\Users\\User\\Desktop\\Github\\Duzce-University-Api\\DuzceUniversityWebApi\\DuzceUniversityWebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Desktop\\programlama\\web\\DuzceUniversityWebApi\\DuzceUniversityWebApi\\DuzceUniversityWebApi.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Desktop\\Github\\Duzce-University-Api\\DuzceUniversityWebApi\\DuzceUniversityWebApi.csproj",
         "projectName": "DuzceUniversityWebApi",
-        "projectPath": "C:\\Users\\User\\Desktop\\programlama\\web\\DuzceUniversityWebApi\\DuzceUniversityWebApi\\DuzceUniversityWebApi.csproj",
+        "projectPath": "C:\\Users\\User\\Desktop\\Github\\Duzce-University-Api\\DuzceUniversityWebApi\\DuzceUniversityWebApi.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Desktop\\programlama\\web\\DuzceUniversityWebApi\\DuzceUniversityWebApi\\obj\\",
+        "outputPath": "C:\\Users\\User\\Desktop\\Github\\Duzce-University-Api\\DuzceUniversityWebApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
