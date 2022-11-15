@@ -69,20 +69,7 @@ jobs:
     - name: Azure Login
       uses: azure/login@v1
       with:
-        creds: {
-    "cloudName": "AzureCloud",
-    "homeTenantId": "1c572e11-b3fd-407d-971c-a37de1d8a5c0",
-    "id": "e994bbc0-f0c2-47d9-8b5e-f0caac0cd628",
-    "isDefault": true,
-    "managedByTenants": [],
-    "name": "Azure for Students",
-    "state": "Enabled",
-    "tenantId": "1c572e11-b3fd-407d-971c-a37de1d8a5c0",
-    "user": {
-      "name": "emre90280@ogr.duzce.edu.tr",
-      "type": "user"
-    }
-  }
+        creds: ${{ secrets.AZURELOGIN }}
     - name: Import API into Azure API Management
       run: az apim api import --path "${{ env.AZURE_APIM_RESOURCE_PATH }}" --resource-group "${{ env.AZURE_APIM_RESOURCEGROUP }}" --service-name "${{ env.AZURE_APIM_SERVICENAME }}" --api-id "${{ env.AZURE_APIM_API_ID }}" --service-url "${{ env.AZURE_APIM_APPSERVICEURL }}" --specification-path "${{ env.API_IMPORT_SPECIFICATION_PATH }}" --specification-format OpenApi --subscription-required false
     - name: logout
