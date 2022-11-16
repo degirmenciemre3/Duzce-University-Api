@@ -1,5 +1,6 @@
 ﻿using DuzceUniversityWebApi.Model;
 using DuzceUniversityWebApi.Model.ViewModel;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace DuzceUniversityWebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("myclients")]
     public class DuyurularController : ControllerBase
     {
         private IDuyurularRepository repository;

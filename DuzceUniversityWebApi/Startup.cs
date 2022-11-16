@@ -39,6 +39,10 @@ namespace DuzceUniversityWebApi
                 opts.UseSqlServer(
                     Configuration["ConnectionStrings:DatabaseConnection"]);
             });
+            services.AddCors(options =>
+                options.AddPolicy("myclients", builder =>
+                builder.WithOrigins("https://localhost:3000", "http://localhost:3000").AllowAnyMethod().AllowAnyHeader()));
+
 
             services.AddScoped<IDuyurularRepository, EFDuyurularRepository>();
 
@@ -62,6 +66,7 @@ namespace DuzceUniversityWebApi
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseCors("myclients");
 
             app.UseAuthentication();
             app.UseAuthorization();

@@ -3,6 +3,6 @@
   <PropertyGroup>
     <Controller_SelectedScaffolderID>MvcControllerWithActionsScaffolder</Controller_SelectedScaffolderID>
     <Controller_SelectedScaffolderCategoryPath>root/Common/MVC/Controller</Controller_SelectedScaffolderCategoryPath>
-    <NameOfLastUsedPublishProfile>C:\Users\User\Desktop\Github\Duzce-University-Api\DuzceUniversityWebApi\Properties\PublishProfiles\DuzceUniversityWebApi - Web Deploy.pubxml</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>C:\Users\User\Desktop\Github\Duzce-University-Api\.github\workflows\DuzceUniversityWebApi.yml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>
