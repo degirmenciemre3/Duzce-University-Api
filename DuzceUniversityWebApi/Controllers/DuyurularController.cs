@@ -50,9 +50,11 @@ namespace DuzceUniversityWebApi.Controllers
         //}
 
         // DELETE api/<DuyurularController>/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
+            Duyuru duyuru = repository.Duyurulars.Where(d => d.Id == id).FirstOrDefault();
+            repository.DeleteDuyuru(duyuru);
+        }
     }
 }
