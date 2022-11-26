@@ -15,14 +15,9 @@ namespace DuzceUniversityWebApi.Controllers
     public class DuyurularController : ControllerBase
     {
         private IDuyurularRepository repository;
-        private DuyuruViewModel viewModel;
         public DuyurularController(IDuyurularRepository repo)
         {
             repository = repo;
-            viewModel = new DuyuruViewModel
-            {
-                Duyurulars = repository.Duyurulars
-            };
         }
         // GET: api/<DuyurularController>
         [HttpGet]
