@@ -41,7 +41,7 @@ namespace DuzceUniversityWebApi
             });
             services.AddCors(options =>
                 options.AddPolicy("myclients", builder =>
-                builder.WithOrigins("https://localhost:3000", "https://duzce-university.netlify.app").AllowAnyMethod().AllowAnyHeader()));
+                builder.WithOrigins("http://localhost:3000", "https://duzce-university.netlify.app").AllowAnyMethod().AllowAnyHeader()));
 
 
             services.AddScoped<IDuyurularRepository, EFDuyurularRepository>();
