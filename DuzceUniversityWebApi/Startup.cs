@@ -45,6 +45,7 @@ namespace DuzceUniversityWebApi
 
 
             services.AddScoped<IDuyurularRepository, EFDuyurularRepository>();
+            services.AddScoped<IStudentRepository, EFStudentRepository>();
 
             services.AddDbContext<AppIdentityDbContext>(options =>
                 options.UseSqlServer(

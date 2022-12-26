@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace DuzceUniversityWebApi.Model
@@ -6,11 +7,11 @@ namespace DuzceUniversityWebApi.Model
     public class Duyuru
     {
         [Key]
-        public double Id { get; set; }
-        public DateTime Tarih { get; set; }
-        public string KisaAciklama { get; set; }
-        public string Aciklama { get; set; }
-        public string Baslik { get; set; }
-        public string Image { get; set; }
+        public int Id { get; set; }
+        public string title { get; set; }
+        public string category { get; set; }
+        public string date { get; set; }
+        public string imgUrl { get; set; }
+        public string description { get; set; }
     }
 }

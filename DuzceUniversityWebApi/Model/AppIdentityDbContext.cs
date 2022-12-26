@@ -7,5 +7,7 @@ namespace DuzceUniversityWebApi.Model
     {
         public AppIdentityDbContext(DbContextOptions<AppIdentityDbContext> options)
            : base(options) { }
+
+        public DbSet<Students> students { get; set; }
     }
 }

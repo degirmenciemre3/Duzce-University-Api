@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DuzceUniversityWebApi.Migrations.AppIdentityDb
 {
-    public partial class IdentityDbContext : Migration
+    public partial class AppIdentityInitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -46,6 +46,27 @@ namespace DuzceUniversityWebApi.Migrations.AppIdentityDb
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "students",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    createdAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    profileImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    lastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    bolum = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    tecrube = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    mezunDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    stajDurumu = table.Column<bool>(type: "bit", nullable: false),
+                    ogrenciMail = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_students", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -210,6 +231,9 @@ namespace DuzceUniversityWebApi.Migrations.AppIdentityDb
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "students");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

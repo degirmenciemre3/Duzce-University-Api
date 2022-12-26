@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DuzceUniversityWebApi.Migrations
 {
@@ -11,12 +10,13 @@ namespace DuzceUniversityWebApi.Migrations
                 name: "duyurulars",
                 columns: table => new
                 {
-                    Id = table.Column<double>(type: "float", nullable: false),
-                    Tarih = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    KisaAciklama = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Aciklama = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Baslik = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Image = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    title = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    category = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    date = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    imgUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    description = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {

@@ -19,6 +19,45 @@ namespace DuzceUniversityWebApi.Migrations.AppIdentityDb
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("DuzceUniversityWebApi.Model.Students", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("bolum")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("createdAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("lastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("mezunDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ogrenciMail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("profileImage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("stajDurumu")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("tecrube")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("students");
+                });
+
             modelBuilder.Entity("DuzceUniversityWebApi.Model.UserModel", b =>
                 {
                     b.Property<string>("Id")

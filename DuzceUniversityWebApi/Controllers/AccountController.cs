@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace DuzceUniversityWebApi.Controllers
@@ -18,11 +21,13 @@ namespace DuzceUniversityWebApi.Controllers
         private UserManager<UserModel> userManager;
         private SignInManager<UserModel> signInManager;
         private ResponseService resService = new ResponseService();
+        private IStudentRepository repo;
         public AccountController(UserManager<UserModel> userMgr,
-                SignInManager<UserModel> signInMgr)
+                SignInManager<UserModel> signInMgr, IStudentRepository _repo)
         {
             userManager = userMgr;
             signInManager = signInMgr;
+            repo = _repo;
         }
 
         [Route("AccountLogin")]
@@ -54,6 +59,47 @@ namespace DuzceUniversityWebApi.Controllers
             resService.Description = "Çıkış İşlemi Başarılı";
             resService.Result = 1;
             return Json(resService);
+        }
+
+        [Route("AccountRegister")]
+        [HttpPost]
+        [Authorize]
+        public async Task<ActionResult> Register(RegisterModel registerModel)
+        {
+            IEnumerable<Students> students = repo.Students;
+            Students student = students.Where(p => p.ogrenciMail == registerModel.ogrenciMail).FirstOrDefault();
+            if (student != null)
+            {
+                resService.Description = "Bu Mail İle Bir Kayıt Zaten Var";
+                resService.Result = 0;
+                return Json(resService);
+            }
+            else
+            {
+                Students newStudent = new Students();
+                newStudent.createdAt = DateTime.Now;
+                newStudent.stajDurumu = registerModel.stajDurumu;
+                newStudent.tecrube = registerModel.tecrube;
+                newStudent.bolum = registerModel.bolum;
+                newStudent.ogrenciMail = registerModel.ogrenciMail;
+                newStudent.lastName = registerModel.lastName;
+                newStudent.name = registerModel.name;
+                newStudent.profileImage = registerModel.profileImage;
+                newStudent.mezunDate = registerModel.mezunDate;
+                repo.CreateStudent(newStudent);
+                resService.Description = "Öğrenci Başarılı Bir Şekilde Kayıt Edildi";
+                resService.Result = 1;
+                return Json(resService);
+            }
+            
+        }
+
+        [Route("AccountGet")]
+        [HttpGet]
+        [Authorize]
+        public IEnumerable<Students> AccountGet()
+        {
+            return repo.Students;
         }
     }
 }
