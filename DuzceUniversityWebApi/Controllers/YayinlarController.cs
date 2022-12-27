@@ -10,71 +10,72 @@ using System.Threading.Tasks;
 
 namespace DuzceUniversityWebApi.Controllers
 {
-    
+
     [Route("api/[controller]")]
     [ApiController]
     [EnableCors("myclients")]
-    public class DuyurularController : Controller
+    public class YayinlarController : Controller
     {
-        private IDuyurularRepository repository;
+        private IYayinRepository repository;
         private ResponseService resService = new ResponseService();
-        public DuyurularController(IDuyurularRepository repo)
+        public YayinlarController(IYayinRepository repo)
         {
             repository = repo;
         }
-        // GET: api/<DuyurularController>
-        [Route("DuyurularGet")]
+        // GET: api/<YayinlarController>
+        [Route("YayinlarGet")]
         [HttpGet]
-        public IEnumerable<Duyuru> Get()
+        public IEnumerable<Yayin> Get()
         {
-            return repository.Duyurulars;
+            return repository.Yayinlars;
             //return new string[] { "value1", "value2" };
         }
 
-        // GET api/<DuyurularController>/5
-        [Route("DuyurularGetId")]
+        // GET api/<YayinlarController>
+        [Route("YayinlarGetId")]
         [HttpGet]
-        public Duyuru Get(int id)
+        public Yayin Get(int id)
         {
-            return repository.Duyurulars.Where(d => d.Id == id).FirstOrDefault();
+            return repository.Yayinlars.Where(d => d.Id == id).FirstOrDefault();
         }
 
-        // POST api/<DuyurularController>
+        // POST api/<YayinlarController>
         [Authorize(Roles = "Administrator")]
-        [Route("DuyuruCreate")]
+        [Route("YayinCreate")]
         [HttpPost]
-        public ActionResult DuyurularPost([FromBody] Duyuru postDu)
+        public ActionResult YayinlarPost([FromBody] Yayin postDu)
         {
             try
             {
-                repository.CreateDuyuru(postDu);
-                resService.Description = "Duyuru Eklendi.";
+                repository.CreateYayin(postDu);
+                resService.Description = "Yayin Eklendi.";
                 resService.Result = 1;
                 return Json(resService);
             }
             catch
             {
-                resService.Description = "Duyuru ekleme işlemi başarısız";
+                resService.Description = "Yayin ekleme işlemi başarısız";
                 resService.Result = 0;
                 return Json(resService);
             }
-            
+
         }
 
-        // PUT api/<DuyurularController>/5
+        // PUT api/<YayinlarController>
         //[HttpPut("{id}")]
         //public void Put(int id, [FromBody] string value)
         //{
         //}
 
-        // DELETE api/<DuyurularController>/5
+        // DELETE api/<YayinlarController>
         [Authorize(Roles = "Administrator")]
-        [Route("DuyuruDelete")]
+        [Route("YayinDelete")]
         [HttpDelete]
         public void Delete(int id)
         {
-            Duyuru duyuru = repository.Duyurulars.Where(d => d.Id == id).FirstOrDefault();
-            repository.DeleteDuyuru(duyuru);
+            Yayin yayin = repository.Yayinlars.Where(d => d.Id == id).FirstOrDefault();
+            repository.DeleteYayin(yayin);
         }
+
     }
 }

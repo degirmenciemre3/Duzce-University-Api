@@ -8,5 +8,6 @@ namespace DuzceUniversityWebApi.Model
         public DatabaseContext(DbContextOptions<DatabaseContext> options)
             : base(options) { }
         public DbSet<Duyuru> duyurulars { get; set; }
+        public DbSet<Yayin> yayinlars { get; set; }
     }
 }
