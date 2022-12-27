@@ -62,6 +62,7 @@ namespace DuzceUniversityWebApi.Controllers
         }
 
         [Route("AccountRegister")]
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         [Authorize]
         public async Task<ActionResult> Register(RegisterModel registerModel)
@@ -94,9 +95,36 @@ namespace DuzceUniversityWebApi.Controllers
             
         }
 
-        [Route("AccountGet")]
+        [Route("AccountGetById")]
+        [Authorize(Roles = "Administrator")]
         [HttpGet]
-        [Authorize]
+        public Students AccountGetById(int _id)
+        {
+            Students student = repo.Students.Where(d => d.id == _id).FirstOrDefault();
+            return student;
+        }
+
+        [Route("AccountGetByMail")]
+        [Authorize(Roles = "Administrator")]
+        [HttpGet]
+        public Students AccountGetByNo(string _mail)
+        {
+            Students student = repo.Students.Where(d => d.ogrenciMail == _mail).FirstOrDefault();
+            return student;
+        }
+
+        [Route("AccountGetByBolum")]
+        [Authorize(Roles = "Administrator")]
+        [HttpGet]
+        public Students AccountGetByBolum(string _bolum)
+        {
+            Students student = repo.Students.Where(d => d.bolum == _bolum).FirstOrDefault();
+            return student;
+        }
+
+        [Route("AccountGet")]
+        [Authorize(Roles = "Administrator")]
+        [HttpGet]
         public IEnumerable<Students> AccountGet()
         {
             return repo.Students;

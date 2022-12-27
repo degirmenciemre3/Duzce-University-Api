@@ -4,7 +4,7 @@
   "parameters": {
     "resourceGroupName": {
       "type": "string",
-      "defaultValue": "DuzceUniversityWebApi",
+      "defaultValue": "duzceuniversitywebapi",
       "metadata": {
         "_parameterType": "resourceGroup",
         "description": "Kaynak için kaynak grubunun adı. Daha iyi izleme için kaynakları aynı kaynak grubu altına koymanız önerilir."
