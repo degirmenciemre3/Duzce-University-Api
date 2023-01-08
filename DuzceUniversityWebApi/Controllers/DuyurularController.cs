@@ -62,10 +62,31 @@ namespace DuzceUniversityWebApi.Controllers
         }
 
         // PUT api/<DuyurularController>/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
+        [Authorize(Roles = "Administrator")]
+        [Route("DuyuruUpdate/{id:int}")]
+        [HttpPut]
+        public ActionResult Put(int id,[FromBody] UpdateDuyuruViewModel du)
+        {
+            try
+            {
+                var duyuru = repository.Duyurulars.FirstOrDefault(p => p.Id == id);
+                duyuru.description = du.description;
+                duyuru.date = du.date;
+                duyuru.title = du.title;
+                duyuru.imgUrl = du.imgUrl;
+                duyuru.category = du.category;
+                repository.SaveDuyuru(duyuru);
+                resService.Description = "Duyuru Güncellendi.";
+                resService.Result = 1;
+                return Json(resService);
+            }
+            catch
+            {
+                resService.Description = "Duyuru güncelleme işlemi başarısız";
+                resService.Result = 0;
+                return Json(resService);
+            }
+        }
 
         // DELETE api/<DuyurularController>/5
         [Authorize(Roles = "Administrator")]

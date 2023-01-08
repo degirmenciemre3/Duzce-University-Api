@@ -62,10 +62,31 @@ namespace DuzceUniversityWebApi.Controllers
         }
 
         // PUT api/<YayinlarController>
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
+        [Authorize(Roles = "Administrator")]
+        [Route("YayinUpdate/{id:int}")]
+        [HttpPut]
+        public ActionResult Put(int id, [FromBody] UpdateYayinViewModel yay)
+        {
+            try
+            {
+                var yayin = repository.Yayinlars.FirstOrDefault(p => p.Id == id);
+                yayin.description = yay.description;
+                yayin.date = yay.date;
+                yayin.title = yay.title;
+                yayin.imgUrl = yay.imgUrl;
+                yayin.category = yay.category;
+                repository.SaveYayin(yayin);
+                resService.Description = "Yayın Güncellendi.";
+                resService.Result = 1;
+                return Json(resService);
+            }
+            catch
+            {
+                resService.Description = "Yayın güncelleme işlemi başarısız";
+                resService.Result = 0;
+                return Json(resService);
+            }
+        }
 
         // DELETE api/<YayinlarController>
         [Authorize(Roles = "Administrator")]
